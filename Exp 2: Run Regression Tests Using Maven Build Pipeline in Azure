@@ -1,0 +1,30 @@
+Aim: To perform regression testing automatically using Maven and Azure DevOps.
+Steps to perform
+1. Open IntelliJ IDEA.
+2. Create a Maven project named RegressionTestingDev.
+3. Select Java JDK and enable Create Git Repository.
+4. Open pom.xml.
+5. Add the JUnit 4.13.2 dependency.
+6. Reload the Maven project.
+7. Inside src/test/java, create the package org.example.
+8. Create a Java test class named MainTest.java.
+9. Enter the JUnit test code from your manual.
+10. Run MainTest in IntelliJ and verify that the test passes.
+11. Create a private GitHub repository named RegressionTestingDev.
+12. Open the terminal and execute:
+git init
+git add .
+git commit -m "regression"
+git branch -M main
+git remote add origin YOUR_REPOSITORY_URL
+git push -u origin main
+
+
+13. Open Azure DevOps and create a project named RegressionTestingDev.
+14. Go to Pipelines → New Pipeline.
+15. Select GitHub and choose your repository.
+16. Authorize GitHub access if requested.
+17. Choose Maven as the pipeline type.
+18. Replace the generated YAML content with the pipeline code given in your manual.
+19. Click Save and Run.
+20. Open the Test Results tab to check whether the JUnit tests passed.
