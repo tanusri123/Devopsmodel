@@ -1,0 +1,75 @@
+Aim: To install Ansible and create roles that automatically install Git, PostgreSQL and Apache.
+Steps to perform
+1. Open Ubuntu terminal.
+2. Update and upgrade packages:
+   sudo apt update
+   sudo apt upgrade
+3. Install the required repository package:
+   sudo apt install -y software-properties-common
+4. Add the Ansible repository:
+   sudo add-apt-repository --yes --update ppa:ansible/ansible
+5. Install Ansible:
+   sudo apt install -y ansible
+6. Configure the locale:
+   sudo apt install -y locales
+   sudo locale-gen en_US.UTF-8
+   export LANG=en_US.UTF-8
+   export LC_ALL=en_US.UTF-8
+7. Verify the installation:
+   ansible --version
+8. Open the Ansible configuration directory:
+   cd /etc/ansible
+   ls -la
+9. Edit the inventory file:
+   sudo nano /etc/ansible/hosts
+10. Add:
+    localhost ansible_connection=local
+11. Save and close the file.
+12. Create the roles directory:
+    sudo mkdir -p /etc/ansible/roles
+    cd /etc/ansible/roles
+13. Create three Ansible roles:
+    sudo ansible-galaxy init prerequisites
+    sudo ansible-galaxy init postgresql
+    sudo ansible-galaxy init apache
+14. Verify the directory structure:
+    sudo apt install -y tree
+    tree /etc/ansible/roles
+15. Configure the prerequisites role:
+    sudo nano /etc/ansible/roles/prerequisites/tasks/main.yml
+    
+    
+    Add the Git installation task from your manual.
+16. Configure the PostgreSQL role:
+    sudo nano /etc/ansible/roles/postgresql/tasks/main.yml
+    
+    
+    Add tasks to install PostgreSQL and start its service.
+17. Configure the Apache role:
+    sudo nano /etc/ansible/roles/apache/tasks/main.yml
+    
+    
+    Add the Apache installation task.
+18. Create the main playbook:
+    sudo nano /etc/ansible/stack.yml
+19. Enter:
+    ---
+    - hosts: localhost
+      become: true
+      roles:
+        - prerequisites
+        - postgresql
+        - apache
+20. Save the file and execute:
+    cd /etc/ansible
+    sudo ansible-playbook -i hosts stack.yml
+21. Verify Git:
+    git --version
+22. Verify Apache:
+    apache2 -v
+23. Check PostgreSQL:
+    sudo systemctl status postgresql
+24. Verify the database cluster:
+    pg_lsclusters
+25. Test PostgreSQL:
+    sudo -u postgres psql -c "SELECT version();"
