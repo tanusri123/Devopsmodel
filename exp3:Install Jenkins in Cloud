@@ -1,0 +1,25 @@
+Aim: To install and configure Jenkins.
+Steps to perform
+1. Open the Ubuntu terminal.
+2. Update the system packages:
+   sudo apt update
+3. Add the Jenkins repository key and repository as required by your manual, then install Jenkins.
+   sudo apt-get install jenkins
+4. Start Jenkins and check whether it is running:
+   sudo systemctl start jenkins
+   sudo systemctl status jenkins
+5. Open your browser and enter:
+   http://localhost:8080
+   
+   
+   For a cloud server, use the server's reachable address and port 8080 instead.
+6. Obtain the Jenkins initial administrator password:
+   sudo cat /var/lib/jenkins/secrets/initialAdminPassword
+7. Copy the displayed password and paste it into the Jenkins Unlock screen.
+8. Click Install Suggested Plugins.
+9. After installation, create the first admin user.
+10. Enter Username, Password, Full Name and Email.
+11. Click Save and Continue.
+12. Configure the Jenkins URL.
+13. Click Save and Finish.
+14. Open the Jenkins Dashboard.
