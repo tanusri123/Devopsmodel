@@ -1,0 +1,48 @@
+Aim: To create, build and execute a Java application using Gradle in Ubuntu.
+Steps to perform
+1. Open Ubuntu terminal.
+2. Install Gradle:
+   sudo snap install gradle --classic
+3. Create a directory:
+   mkdir java_application
+4. Enter the directory:
+   cd java_application
+5. Initialize a Gradle project:
+   gradle init
+6. Gradle will ask for configurations. Choose the options shown in your manual:
+   
+   | Configuration | Selection |
+   |---|---|
+   | Project type | Application |
+   | Language | Java |
+   | Java version | 17 |
+   | Project name | java_application |
+   | Structure | Single application |
+   | DSL | Kotlin or Groovy |
+   | Test framework | JUnit 4 |
+7. Complete any remaining Gradle initialization prompts.
+8. Install the tree command:
+   sudo apt install tree -y
+9. Run the generated application:
+   ./gradlew run
+10. Open the generated App.java file.
+11. Replace the default Java code with the arithmetic program from your manual.
+12. Check the package name in App.java.
+13. Open build.gradle.kts or build.gradle, depending on the DSL you selected.
+14. Set the application's mainClass to match the fully qualified name of your Java class.
+15. Run the application again:
+./gradlew run
+
+
+16. View the project structure:
+tree
+
+
+17. Create a GitHub repository and push the Gradle project:
+git init
+git add .
+git status
+git commit -m "initial commit"
+git branch -M main
+git remote add origin YOUR_REPOSITORY_URL
+git push -u origin main
