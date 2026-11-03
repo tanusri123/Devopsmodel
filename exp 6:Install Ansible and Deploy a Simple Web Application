@@ -1,0 +1,43 @@
+Aim: To create and execute an Ansible playbook that installs Apache and deploys a simple HTML web application.
+Steps to perform
+1. Open Ubuntu terminal.
+2. Check whether Ansible is installed:
+   ansible --version
+3. Set the UTF-8 locale:
+   export LANG=C.UTF-8
+   export LC_ALL=C.UTF-8
+4. Create a project directory:
+   mkdir -p ~/ansible-webapp
+   cd ~/ansible-webapp
+5. Create the playbook file:
+   nano webapp.yml
+6. Enter the YAML playbook from your manual. It contains five tasks:
+   - Install Apache using ansible.builtin.apt.
+   - Start and enable Apache using ansible.builtin.service.
+   - Create /var/www/html/index.html using ansible.builtin.copy.
+   - Verify the website using ansible.builtin.uri.
+   - Display a success message using ansible.builtin.debug.
+7. Save the file using Ctrl + O → Enter → Ctrl + X.
+8. Execute the playbook:
+   ansible-playbook webapp.yml --ask-become-pass
+9. Enter your Ubuntu password when requested.
+10. Install curl:
+sudo apt update
+sudo apt install curl -y
+
+
+11. Check Apache's status:
+sudo systemctl status apache2
+
+
+12. Test the website:
+curl http://localhost
+
+
+13. Open Chrome or Firefox and visit:
+http://localhost
+
+
+14. Verify that the web page displays:
+Hello from Ansible!
+My web application was deployed automatically.
